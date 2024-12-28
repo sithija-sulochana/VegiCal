@@ -105,7 +105,12 @@
       font-size: 18px;
       color: #555;
     }
-    
+
+    #total-bill {
+    color: red;
+    font-weight: bold;
+    font-size: 30px;
+  }
     .sticky-button {
       position: sticky;
       bottom: 20px;
@@ -414,7 +419,7 @@
     
    
     <div id="total-bill">
-      <h2>Total Bill:</h2>
+      <h2 >Total Bill:</h2>
       
     </div>
   </div>
@@ -498,20 +503,6 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-function calculateTotal(event) {
-  // Get the vegetable details from the clicked button's parent element
-  const vegetableDiv = event.target.closest('.vegetable');
-  const weightInput = vegetableDiv.querySelector('input[type="number"]:first-of-type');
-  const priceInput = vegetableDiv.querySelector('input[type="number"]:last-of-type');
-
-  const weight = parseFloat(weightInput.value) || 0; // Get weight from the input, default to 0 if not valid
-  const pricePerKg = parseFloat(priceInput.value) || 0; // Get the price from the input, default to 0 if not valid
-  
-  if (weight > 0) {
-    const totalCost = (weight / 1000) * pricePerKg; // Convert grams to kilograms and multiply by the price per kg
-    displayTotal(totalCost);
-  }
-}
 
 
 
