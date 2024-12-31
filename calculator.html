@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .container{
+            margin: 20px auto;
+            padding: 15px;
+
+        }
+        input{
+            padding: 10px;
+            width: 30%;
+            border-radius: 100px;
+            border: white solid transparent;
+        }
+        button{
+            padding: 10px;
+            border-radius: 100px;
+            background-color: #000;
+            color: #fff;
+            border: none;
+            margin: 20px;
+        }
+        .result{
+           margin: 5px;
+            padding: 10px;
+           background-color: #bfbdb8;
+
+          
+        }
+        .result h1{
+            color:red !important;
+            text-align: center;
+            
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <form action="">
+            <input type="number"  placeholder="Enter Prices" id="enter-price">
+            <button class="add" id="btn-add">ADD</button>
+            <br>
+            <input type="number" placeholder="Enter Received Amount" id="re-price">
+            <button class="add" id="btn-enter">Enter</button>
+
+
+        </form>
+        <div class="result">
+        <h1>Balance:</h1>
+
+        </div>
+    </div>
+
+    <script>
+    const addprice = document.querySelector('#enter-price');
+        const btnaddprice = document.querySelector("#btn-add");
+        const reprice = document.querySelector('#re-price');
+        const btnreprice = document.querySelector("#btn-enter");
+        let total = 0;
+
+        btnaddprice.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            // Get the value from the input field and convert it to a number
+            const addpriceval = parseFloat(addprice.value);
+
+            // Validate if the input is a valid number
+            if (!isNaN(addpriceval)) {
+                total += addpriceval;
+
+                // Display the total in the result div
+                document.querySelector('.result').innerHTML = `<h1>Balance: ${total.toFixed(2)}</h1>`;
+            } else {
+                alert('Please enter a valid number.');
+            }
+
+            // Clear the input field
+            addprice.value = '';
+        });
+
+        btnreprice.addEventListener('click', function(e) {
+            e.preventDefault();
+
+            // Get the value from the input field and convert it to a number
+            const repriceval = parseFloat(reprice.value);
+
+            // Validate if the input is a valid number
+            if (!isNaN(repriceval)) {
+                total =repriceval-total;
+
+                // Display the total in the result div
+                document.querySelector('.result').innerHTML = `<h1>Balance: ${total.toFixed(2)}</h1>`;
+            } else {
+                alert('Please enter a valid number.');
+            }
+
+            // Clear the input field
+            reprice.value = '';
+        });
+
+    </script>
+</body>
+</html>
