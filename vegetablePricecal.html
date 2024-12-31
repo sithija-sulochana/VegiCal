@@ -1,512 +1,55 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Vegetable Price Calculator</title>
-  <script src="script.js"></script>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
-    }
-
-    .container {
-      max-width: 800px;
-      margin: 20px auto;
-      padding: 20px;
-      background-color: #fff;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      border-radius: 8px;
-    }
-
-    h1 {
-      text-align: center;
-      color: #333;
-    }
-
-    .container h1{
-      padding: 30px;
-      background-color: gray;
-      margin: 0;
-    }
-
-    .vegetable {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      margin-bottom: 20px;
-      padding: 10px;
-      border-bottom: 1px solid #ddd;
-    }
-
-    .veg-photo {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      margin-right: 20px;
-      border-radius: 8px;
-    }
-
-    .veg-info {
-      flex: 1;
-    }
-
-    .veg-info h2 {
-      margin: 0 0 10px;
-      color: #333;
-    }
-
-    .veg-info label {
-      display: block;
-      margin-bottom: 5px;
-      font-size: 14px;
-      color: #555;
-    }
-
-    .veg-info input {
-      width: 100%;
-      padding: 8px;
-      margin-bottom: 10px;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-
-    .veg-info button {
-      padding: 10px 15px;
-      background-color: #28a745;
-      color: #fff;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-
-    .veg-info button:hover {
-      background-color: #218838;
-    }
-
-    #total-bill {
-      margin-top: 20px;
-      padding: 10px;
-      background-color: #f8f9fa;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      text-align: center;
-    }
-
-    #total-bill h2 {
-      margin: 0 0 10px;
-      color: #333;
-    }
-
-    #total-bill p {
-      font-size: 18px;
-      color: #555;
-    }
-
-    #total-bill {
-    color: red;
-    font-weight: bold;
-    font-size: 30px;
+@media (max-width: 768px) {
+  .another-price,
+  .remind {
+    flex-direction: column; /* Stack input and button vertically */
+    align-items: stretch; /* Stretch items to full width */
+    padding: 10px;
   }
-    .sticky-button {
-      position: sticky;
-      bottom: 20px;
-      left: 0;
-      right: 0;
-      display: flex;
-      justify-content: center;
-      margin: 0 auto;
-      z-index: 100;
-    }
 
-    .sticky-button button {
-      padding: 15px 20px;
-      background-color: #007bff;
-      color: #fff;
-      font-size: 16px;
-      border: none;
-      border-radius: 4px;
-      cursor: pointer;
-    }
+  .another-price input,
+  .remind input {
+    margin-bottom: 10px; /* Add spacing below input */
+  }
 
-    .sticky-button button:hover {
-      background-color: #0056b3;
-    }
-
-    .highlight {
-      background-color: #dff0d8;
-      transition: background-color 0.5s ease;}
-      .search-bar {
-  margin-bottom: 20px;
-  text-align: center;
-}
-
-.search-bar input {
-  padding: 10px;
-  width: 80%;
-  max-width: 400px;
-  border: 1px solid #ccc;
-  border-radius: 20px;
-  font-size: 16px;
-  margin-top: 10px;
-  display: flex;
-  justify-content: right;
-}
-
-
-    @media (max-width: 600px) {
-      .vegetable {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .veg-photo {
-        margin-bottom: 10px;
-      }
-    }
-  </style>
-</head>
-<body>
- 
-  
-  <div class="container">
-    <h1>Vegetable Price Calculator</h1>
-    <div class="search-bar">
-      <input type="text" id="search-input" placeholder="Search for a vegetable" onkeyup="searchVegetable()">
-    </div>
-    <!-- bonchi --> 
-    <div class="vegetable">
-      <img src="https://via.placeholder.com/100" alt="Carrot" class="veg-photo">
-      <div class="veg-info">
-        <h2>බෝංචි </h2>
-        <label for="weight-carrot">Add Weight (in grams):</label>
-        <input type="number" id="weight-carrot" name="weight-carrot" placeholder="Enter weight" min="0">
-        <label for="price-carrot">Unit Price (Rs/kg):</label>
-        <input type="number" id="price-carrot" name="price-carrot" value="480" >
-        <button>Confirm</button>
-      </div>
-    </div>
-
-    <!-- Vegetable 2 -->
-    <div class="vegetable">
-      <img src="https://via.placeholder.com/100" alt="Tomato" class="veg-photo">
-      <div class="veg-info">
-        <h2>කැරට්</h2>
-        <label for="weight-tomato">Add Weight (in grams):</label>
-        <input type="number" id="weight-tomato" name="weight-tomato" placeholder="Enter weight" min="0">
-        <label for="price-tomato">Unit Price (Rs/kg):</label>
-        <input type="number" id="price-tomato" name="price-tomato" value="240" >
-        <button>Confirm</button>
-      </div>
-    </div>
-
-    
-    <!-- Vegetable 2 -->
-    <div class="vegetable">
-      <img src="https://via.placeholder.com/100" alt="Tomato" class="veg-photo">
-      <div class="veg-info">
-        <h2>ලීක්ස්</h2>
-        <label for="weight-tomato">Add Weight (in grams):</label>
-        <input type="number" id="weight-leaks" name="weight-tomato" placeholder="Enter weight" min="0">
-        <label for="price-tomato">Unit Price (Rs/kg):</label>
-        <input type="number" id="price-tomato" name="price-tomato" value="360" >
-        <button>Confirm</button>
-      </div>
-    </div>
-
-    
-    <!-- Vegetable 2 -->
-    <div class="vegetable">
-      <img src="https://via.placeholder.com/100" alt="Tomato" class="veg-photo">
-      <div class="veg-info">
-        <h2>ගෝවා</h2>
-        <label for="weight-tomato">Add Weight (in grams):</label>
-        <input type="number" id="weight-guva" name="weight-tomato" placeholder="Enter weight" min="0">
-        <label for="price-tomato">Unit Price (Rs/kg):</label>
-        <input type="number" id="price-tomato" name="price-tomato" value="240" >
-        <button>Confirm</button>
-      </div>
-    </div>
-
-    
-    <!-- Vegetable 2 -->
-    <div class="vegetable">
-      <img src="https://via.placeholder.com/100" alt="Tomato" class="veg-photo">
-      <div class="veg-info">
-        <h2>බණ්ඩක්කා </h2>
-        <label for="weight-tomato">Add Weight (in grams):</label>
-        <input type="number" id="weight-bandakka" name="weight-tomato" placeholder="Enter weight" min="0">
-        <label for="price-tomato">Unit Price (Rs/kg):</label>
-        <input type="number" id="price-tomato" name="price-tomato" value="200" >
-        <button>Confirm</button>
-      </div>
-    </div>
-
-    
-    <!-- Vegetable 2 -->
-    <div class="vegetable">
-      <img src="https://via.placeholder.com/100" alt="Tomato" class="veg-photo">
-      <div class="veg-info">
-        <h2>දබල</h2>
-        <label for="weight-tomato">Add Weight (in grams):</label>
-        <input type="number" id="weight-dabala" name="weight-tomato" placeholder="Enter weight" min="0">
-        <label for="price-tomato">Unit Price (Rs/kg):</label>
-        <input type="number" id="price-tomato" name="price-tomato" value="220" >
-        <button>Confirm</button>
-      </div>
-    </div>
-
-    
-    <!-- Vegetable 2 -->
-    <div class="vegetable">
-      <img src="https://via.placeholder.com/100" alt="Tomato" class="veg-photo">
-      <div class="veg-info">
-        <h2>කැකිරි</h2>
-        <label for="weight-tomato">Add Weight (in grams):</label>
-        <input type="number" id="weight-kakiri" name="weight-tomato" placeholder="Enter weight" min="0">
-        <label for="price-tomato">Unit Price (Rs/kg):</label>
-        <input type="number" id="price-tomato" name="price-tomato" value="200" >
-        <button>Confirm</button>
-      </div>
-    </div>
-
-    
-    <!-- Vegetable 2 -->
-    <div class="vegetable">
-      <img src="https://via.placeholder.com/100" alt="Tomato" class="veg-photo">
-      <div class="veg-info">
-        <h2>තලනබටු</h2>
-        <label for="weight-tomato">Add Weight (in grams):</label>
-        <input type="number" id="weight-thalanabatu" name="weight-tomato" placeholder="Enter weight" min="0">
-        <label for="price-tomato">Unit Price (Rs/kg):</label>
-        <input type="number" id="price-tomato" name="price-tomato" value="280" >
-        <button>Confirm</button>
-      </div>
-    </div>
-
-    
-    <!-- Vegetable 2 -->
-    <div class="vegetable">
-      <img src="https://via.placeholder.com/100" alt="Tomato" class="veg-photo">
-      <div class="veg-info">
-        <h2>වම්බටු</h2>
-        <label for="weight-tomato">Add Weight (in grams):</label>
-        <input type="number" id="weight-wambatu" name="weight-tomato" placeholder="Enter weight" min="0">
-        <label for="price-tomato">Unit Price (Rs/kg):</label>
-        <input type="number" id="price-tomato" name="price-tomato" value="440" >
-        <button>Confirm</button>
-      </div>
-    </div>
-
-    
-    <!-- Vegetable 2 -->
-    <div class="vegetable">
-      <img src="https://via.placeholder.com/100" alt="Tomato" class="veg-photo">
-      <div class="veg-info">
-        <h2>පිපිඤ්ඤා</h2>
-        <label for="weight-tomato">Add Weight (in grams):</label>
-        <input type="number" id="weight-pip" name="weight-tomato" placeholder="Enter weight" min="0">
-        <label for="price-tomato">Unit Price (Rs/kg):</label>
-        <input type="number" id="price-tomato" name="price-tomato" value="240" >
-        <button>Confirm</button>
-      </div>
-    </div>
-
-    
-    <!-- Vegetable 2 -->
-    <div class="vegetable">
-      <img src="https://via.placeholder.com/100" alt="Tomato" class="veg-photo">
-      <div class="veg-info">
-        <h2>පතෝල</h2>
-        <label for="weight-tomato">Add Weight (in grams):</label>
-        <input type="number" id="weight-pathola" name="weight-tomato" placeholder="Enter weight" min="0">
-        <label for="price-tomato">Unit Price (Rs/kg):</label>
-        <input type="number" id="price-tomato" name="price-tomato" value="300" >
-        <button>Confirm</button>
-      </div>
-    </div>
-
-    
-    <!-- Vegetable 2 -->
-    <div class="vegetable">
-      <img src="https://via.placeholder.com/100" alt="Tomato" class="veg-photo">
-      <div class="veg-info">
-        <h2>අළුකෙසෙල්</h2>
-        <label for="weight-tomato">Add Weight (in grams):</label>
-        <input type="number" id="weight-alukesel" name="weight-tomato" placeholder="Enter weight" min="0">
-        <label for="price-tomato">Unit Price (Rs/kg):</label>
-        <input type="number" id="price-tomato" name="price-tomato" value="200" >
-        <button>Confirm</button>
-      </div>
-    </div>
-
-    
-    <!-- Vegetable 2 -->
-    <div class="vegetable">
-      <img src="https://via.placeholder.com/100" alt="Tomato" class="veg-photo">
-      <div class="veg-info">
-        <h2>අමු මිරිස්</h2>
-        <label for="weight-tomato">Add Weight (in grams):</label>
-        <input type="number" id="weight-amu" name="weight-tomato" placeholder="Enter weight" min="0">
-        <label for="price-tomato">Unit Price (Rs/kg):</label>
-        <input type="number" id="price-tomato" name="price-tomato" value="1400" >
-        <button>Confirm</button>
-      </div>
-    </div>
-
-    
-    <!-- Vegetable 2 -->
-    <div class="vegetable">
-      <img src="https://via.placeholder.com/100" alt="Tomato" class="veg-photo">
-      <div class="veg-info">
-        <h2>තක්කාලි</h2>
-        <label for="weight-tomato">Add Weight (in grams):</label>
-        <input type="number" id="weight-tomato" name="weight-tomato" placeholder="Enter weight" min="0">
-        <label for="price-tomato">Unit Price (Rs/kg):</label>
-        <input type="number" id="price-tomato" name="price-tomato" value="500" >
-        <button>Confirm</button>
-      </div>
-    </div>
-
-    
-    <!-- Vegetable 2 -->
-    <div class="vegetable">
-      <img src="https://via.placeholder.com/100" alt="Tomato" class="veg-photo">
-      <div class="veg-info">
-        <h2>දෙහි</h2>
-        <label for="weight-tomato">Add Weight (in grams):</label>
-        <input type="number" id="weight-lemo" name="weight-tomato" placeholder="Enter weight" min="0">
-        <label for="price-tomato">Unit Price (Rs/kg):</label>
-        <input type="number" id="price-tomato" name="price-tomato" value="600">
-        <button>Confirm</button>
-      </div>
-    </div>
-
-    
-    <!-- Vegetable 2 -->
-    <div class="vegetable">
-      <img src="https://via.placeholder.com/100" alt="Tomato" class="veg-photo">
-      <div class="veg-info">
-        <h2>ඉගුරු</h2>
-        <label for="weight-tomato">Add Weight (in grams):</label>
-        <input type="number" id="weight-ginger" name="weight-tomato" placeholder="Enter weight" min="0">
-        <label for="price-tomato">Unit Price (Rs/kg):</label>
-        <input type="number" id="price-tomato" name="price-tomato" value="1300" >
-        <button>Confirm</button>
-      </div>
-    </div>
-
-    <div class="vegetable">
-      <img src="https://via.placeholder.com/100" alt="Tomato" class="veg-photo">
-      <div class="veg-info">
-        <h2>මෑකරල්</h2>
-        <label for="weight-tomato">Add Weight (in grams):</label>
-        <input type="number" id="weight-ma" name="weight-tomato" placeholder="Enter weight" min="0">
-        <label for="price-tomato">Unit Price (Rs/kg):</label>
-        <input type="number" id="price-tomato" name="price-tomato" value="1300" >
-        <button>Confirm</button>
-      </div>
-    </div>
-
-    <div class="sticky-button">
-      <button id="calculate-bill">Calculate Bill</button>
-    </div>
-  
-
-    
-   
-    <div id="total-bill">
-      <h2 >Total Bill:</h2>
-      
-    </div>
-  </div>
-</body>
-<script>
-
-  
-document.getElementById('calculate-bill').addEventListener('click', () => {
-      // Scroll to the Total Bill section
-      const totalBill = document.getElementById('total-bill');
-      totalBill.scrollIntoView({ behavior: 'smooth' });
-      function updateTotal() {
-      let totalPrice = 0;
-      
-      // Iterate over the vegetable data
-      for (const vegKey in vegData) {
-        const veg = vegData[vegKey];
-        const weight = document.getElementById(veg.weightInputId).value;
-        const pricePerKg = veg.price;
-        
-        if (weight) {
-          totalPrice += (parseFloat(weight) / 1000) * pricePerKg;
-        }
-      }
-      
-      totalBillElement.innerHTML = `<h2>Total Bill</h2><p>Rs ${totalPrice.toFixed(2)}</p>`;
-    }
-  
-    // Event listener to update total when weight is changed
-    const inputs = document.querySelectorAll('input[type="number"]');
-    inputs.forEach(input => {
-      input.addEventListener('input', updateTotal());
-    });
-  
-
-      // Highlight the Total Bill section
-      totalBill.classList.add('highlight');
-      setTimeout(() => {
-        totalBill.classList.remove('highlight');
-      }, 1000);
-    });
-
-function displayTotal(totalCost) {
-  // Find the total bill container
-  const totalBillContainer = document.getElementById('total-bill');
-  
-  // Create or update the total bill display
-  if (!totalBillContainer) {
-    const newTotalBill = document.createElement('div');
-    newTotalBill.id = 'total-bill';
-    newTotalBill.innerHTML = `
-      <h2>Total Bill</h2>
-      <p>Total Cost: Rs ${totalCost.toFixed(2)}</p>
-    `;
-    document.body.appendChild(newTotalBill);
-  } else {
-    totalBillContainer.querySelector('p').textContent = `Total Cost: Rs ${totalCost.toFixed(2)}`;
+  .another-price button,
+  .remind button {
+    margin-top: 10px; /* Add spacing above button */
+    width: 100%; /* Buttons take full width on smaller screens */
+  }
+  .load-calculator {
+    background-color: #bfbdb8;
   }
 }
 
-function searchVegetable() {
-  const searchQuery = document.getElementById("search-input").value.toLowerCase();
-  const vegetables = document.querySelectorAll(".vegetable");
-
-  vegetables.forEach((veg) => {
-    const vegetableName = veg.querySelector("h2").textContent.toLowerCase();
-    if (vegetableName.includes(searchQuery)) {
-      veg.style.display = "block";  // Show vegetable if it matches the search query
-    } else {
-      veg.style.display = "none";  // Hide vegetable if it doesn't match the search query
-    }
-  });
+@media (max-width: 500px) {
+  .load-calculator button {
+    width: 52%;
+    font-size: 16px;
+  }
 }
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Get all the confirm buttons and add event listeners to them
-  const buttons = document.querySelectorAll('.vegetable button');
-  buttons.forEach(button => {
-    button.addEventListener('click', calculateTotal);
-  });
-});
+/* For screens smaller than 480px (mobile devices) */
+@media (max-width: 480px) {
+  .another-price,
+  .remind {
+    padding: 8px;
+  }
 
+  .another-price input,
+  .remind input {
+    font-size: 14px; /* Reduce font size for better fit */
+    padding: 10px;
+  }
 
-
-
-
-
-</script>
-
-</html>
+  .another-price button,
+  .remind button {
+    font-size: 14px; /* Reduce button font size */
+    padding: 10px 15px;
+  }
+  .load-calculator {
+    width: 90%;
+  }
+  .load-cal button {
+    width: 50%;
+  }
+}
